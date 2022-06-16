@@ -5,17 +5,17 @@ function onRun(bgColor) {
 }
 
 document.getElementById("btn_dark").addEventListener("click", async () => {
-  let bgColor = "#333";
   let [tab] = await chrome.tabs.query({
     active: true,
     currentWindow: true
   });
+  const color = "#333";
   chrome.scripting.executeScript({
     target: {
       tabId: tab.id
     },
     func: onRun,
-    args: [bgColor]
+    args: [color]
   });
 });
 
