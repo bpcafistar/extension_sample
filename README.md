@@ -10,3 +10,5 @@ chrome extension 作成の練習
 
 - マニュフェスト
   - https://developer.chrome.com/docs/extensions/mv3/manifest/
+- tabs.query()
+  - https://developer.mozilla.org/ja/docs/Mozilla/Add-ons/WebExtensions/API/tabs/query
