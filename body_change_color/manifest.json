@@ -1,8 +1,9 @@
 {
-  "name": "My Extension",
-  "description": "My Extension",
-  "version": "1.0",
+  "name": "BodyColorChanger",
+  "description": "Body Color Changer",
+  "version": "1.0.1",
   "manifest_version": 3,
+  "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": "icon.png"
