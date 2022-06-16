@@ -1,50 +1,31 @@
 const originalBodyColor = document.body.style.backgroundColor;
 
-function onRun(bgColor) {
+function setColors(bgColor) {
   document.body.style.backgroundColor = bgColor;
 }
 
-document.getElementById("btn_dark").addEventListener("click", async () => {
+async function onRun(color) {
   let [tab] = await chrome.tabs.query({
     active: true,
     currentWindow: true
   });
-  const color = "#333";
   chrome.scripting.executeScript({
     target: {
       tabId: tab.id
     },
-    func: onRun,
+    func: setColors,
     args: [color]
   });
+}
+
+document.getElementById("btn_dark").addEventListener("click", async () => {
+  await onRun("#333");
 });
 
 document.getElementById("btn_bright").addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  });
-  const color = "#fff";
-  chrome.scripting.executeScript({
-    target: {
-      tabId: tab.id
-    },
-    func: onRun,
-    args: [color]
-  });
+  await onRun("#fff");
 });
 
 document.getElementById("btn_reset").addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  });
-  const color = originalBodyColor;
-  chrome.scripting.executeScript({
-    target: {
-      tabId: tab.id
-    },
-    func: onRun,
-    args: [color]
-  });
+  await onRun(originalBodyColor);
 });
